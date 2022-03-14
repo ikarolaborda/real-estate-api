@@ -2,3 +2,5 @@
 .idea/
 vendor/
 docker/mysql/
+src/vendor
+src/.env
