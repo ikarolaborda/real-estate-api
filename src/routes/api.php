@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('v1')->group(function() {
+    Route::prefix('/real_estate')->group(function() {
+        Route::get('/',[App\Http\Controllers\Api\RealEstateController::class, 'index'])->name('realestate_main');
+        Route::post('/',[App\Http\Controllers\Api\RealEstateController::class, 'create'])->name('realestate_create');
+    });
+});
