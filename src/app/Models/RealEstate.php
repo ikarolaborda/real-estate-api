@@ -29,5 +29,26 @@ class RealEstate extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @param RealEstate $realEstate
+     * @return array
+     * Uses the model as a Data Transfer Object
+     */
+    public static function fromRealEstate(RealEstate $realEstate): array
+    {
+        return [
+            'user_id' => $realEstate->userId,
+            'property_title' => $realEstate->property_title,
+            'property_description' => $realEstate->property_description,
+            'content' => $realEstate->content,
+            'property_price' => $realEstate->property_price,
+            'property_bathrooms' => $realEstate->property_bathrooms,
+            'property_rooms' => $realEstate->property_rooms,
+            'property_area' => $realEstate->property_area,
+            'property_total_area' => $realEstate->property_total_area,
+            'slug' => $realEstate->slug
+        ];
+    }
+
 
 }
