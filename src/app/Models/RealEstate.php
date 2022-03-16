@@ -37,7 +37,7 @@ class RealEstate extends Model
     public static function fromRealEstate(RealEstate $realEstate): array
     {
         return [
-            'user_id' => $realEstate->userId,
+            'user_id' => $realEstate->user_id,
             'property_title' => $realEstate->property_title,
             'property_description' => $realEstate->property_description,
             'content' => $realEstate->content,

@@ -17,30 +17,8 @@ class RealEstateCreateQuery
     private int $property_total_area;
     private string $slug;
 
-    /**
-     * @param int $user_id
-     * @param string $property_title
-     * @param string $property_description
-     * @param string|null $content
-     * @param float $property_price
-     * @param int $property_bathrooms
-     * @param int $property_rooms
-     * @param int $property_area
-     * @param int $property_total_area
-     * @param string $slug
-     */
-    public function __construct(int $user_id, string $property_title, string $property_description, ?string $content, float $property_price, int $property_bathrooms, int $property_rooms, int $property_area, int $property_total_area, string $slug)
+    public function __construct()
     {
-        $this->user_id = $user_id;
-        $this->property_title = $property_title;
-        $this->property_description = $property_description;
-        $this->content = $content;
-        $this->property_price = $property_price;
-        $this->property_bathrooms = $property_bathrooms;
-        $this->property_rooms = $property_rooms;
-        $this->property_area = $property_area;
-        $this->property_total_area = $property_total_area;
-        $this->slug = $slug;
     }
 
 

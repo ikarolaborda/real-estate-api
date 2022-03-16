@@ -102,15 +102,16 @@ class RealEstateCreateRequest
 
         if(isset($input['property_area'])) {
             if((float)$input['property_area']<2) {
-                throw new InvalidPropertyAreaValueException();
+                throw new InvalidPropertyAreaValueException(['property_area' => ['cannot be less than 2 square meters']]);
             }
             $query->setPropertyArea($input['property_area']);
         }
 
         if(isset($input['property_total_area'])) {
-            if((float)$input['property_total_area'] < $query->getPropertyArea()) {
-                throw new InvalidPropertyAreaValueException();
+            if($input['property_total_area'] < $query->getPropertyArea()) {
+                throw new InvalidPropertyAreaValueException(['property_total_area' => ['bigger or equal to property_area']]);
             }
+            $query->setPropertyTotalArea($input['property_total_area']);
         }
 
         if(isset($input['slug'])) {
