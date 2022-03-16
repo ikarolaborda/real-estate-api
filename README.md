@@ -4,7 +4,7 @@ This application is based on ``laravel`` framework,
 but implements a different approach for handling requests, 
 as it complies with ``SOLID Principles``
 
-##Setup
+## Setup
 
 The environment already comes with laravel framework files on the ``/src``, however, 
 in order to setup the database service, you will need to create an ``.env`` file on the root of the project 
