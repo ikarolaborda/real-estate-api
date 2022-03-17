@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Api\Input;
 use App\Common\Exception\InvalidRequestException;
 use App\Exceptions\InvalidPropertyAreaValueException;
 use App\Query\RealEstateCreateQuery;
-use Particle\Validator;
+use Particle\Validator\Validator;
 use App\Exceptions\UserNotFoundException;
 use App\Exceptions\UserExceededMaxPropertyNumberException;
 use App\Exceptions\InvalidPropertyValueException;
@@ -17,7 +17,7 @@ class RealEstateCreateRequest
 {
     public static function fromRealEstateCreate(array $input): RealEstateCreateQuery
     {
-        $validator = new Validator\Validator();
+        $validator = new Validator();
 
         $validator
             ->required('user_id')

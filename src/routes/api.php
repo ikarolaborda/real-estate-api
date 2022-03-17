@@ -25,5 +25,6 @@ Route::prefix('v1')->group(function() {
     Route::prefix('/real_estate')->group(function() {
         Route::get('/',[App\Http\Controllers\Api\RealEstateController::class, 'index'])->name('realestate_main');
         Route::post('/',[App\Http\Action\RealEstateCreate::class,'__invoke'])->name('realestate_create');
+        Route::post('/listByParams',[App\Http\Action\RealEstateRead::class,'__invoke'])->name('realestate_retrieve');
     });
 });

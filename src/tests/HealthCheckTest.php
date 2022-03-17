@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Action;
+namespace Tests;
 
+use App\Http\Action\HealthCheck;
 use PHPUnit\Framework\TestCase;
 
 class HealthCheckTest extends TestCase

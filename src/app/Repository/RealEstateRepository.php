@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\RealEstate;
 use App\Query\RealEstateCreateQuery;
+use App\Query\RealEstateReadQuery;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\InvalidPropertyValueException;
 use App\Exceptions\InvalidPropertyAreaValueException;
@@ -25,7 +26,7 @@ class RealEstateRepository
 
     public function createProperty(RealEstateCreateQuery $query): RealEstate
     {
-
+        //I plan to update this function in the future, in order to use raw queries instead of magic methods.
         $this->realEstate->user_id = $query->getUserId();
         $this->realEstate->property_title = $query->getPropertyTitle();
         $this->realEstate->property_description = $query->getPropertyDescription();
@@ -40,5 +41,23 @@ class RealEstateRepository
         $this->realEstate->save();
         return $this->realEstate->refresh();
 
+    }
+
+    /**
+     * @return RealEstate[]
+     * @throws PropertyNotFoundException
+     */
+    public function retrievePropertyById(RealEstateReadQuery $readQuery): ?array
+    {
+        try {
+            if($readQuery->getUserId() != null) {
+                return $this->realEstate->where('user_id', $readQuery->getUserId())->get()->all();
+            }else {
+                return $this->realEstate->where('id', $readQuery->getPropertyId())->get()->all();
+            }
+
+        }catch (PropertyNotFoundException $pnf) {
+            throw new PropertyNotFoundException();
+        }
     }
 }
