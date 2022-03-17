@@ -1,0 +1,35 @@
+openapi: '3.0.0'
+
+tags:
+  - name: 'Public'
+    description: General endpoints
+  - name: 'Authenticated'
+    description: Real Estate management endpoints
+
+servers:
+  - url: https://localhost:8080
+    description: Docker Local Test Server
+
+info:
+  version: '1.0'
+  title: Real Estate API
+  description: 'Real Estate API is a SOLID-Compliant API for educational purposes.'
+  contact:
+    name: Ikaro C. Laborda
+    url: 'https://linkedin.com/in/iclaborda'
+    email: 'iclaborda@msn.com'
+  license:
+    name: proprietary
+    url: 'https://github.com/ikarolaborda/real-estate-api'
+
+paths:
+  /_healthcheck:
+    get:
+      summary: Respond if the application is up
+      description: Returns a response if the application is reachable.
+      tags:
+        - 'Public'
+      operationId: healthcheck
+      responses:
+        '200':
+          description: The application is responding
